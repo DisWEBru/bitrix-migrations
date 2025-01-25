@@ -15,8 +15,8 @@
   "homepage": "https://github.com/DisWEBru/bitrix-migrations",
   "require": {
     "php": ">=8.2",
-    "symfony/console": "~7",
-    "tightenco/collect": "9.*",
+    "symfony/console": "~5|~6|~7",
+    "tightenco/collect": "8.*|9.*",
     "vlucas/phpdotenv": "^5.6"
   },
   "require-dev": {
