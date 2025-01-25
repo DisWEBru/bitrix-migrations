@@ -54,10 +54,14 @@ class InstallCommand extends AbstractCommand
     {
         if ($this->database->checkMigrationTableExistence()) {
             $this->abort("Table \"{$this->table}\" already exists");
+
+            return self::SUCCESS;
         }
 
         $this->database->createMigrationTable();
 
         $this->info('Migration table has been successfully created!');
+
+        return self::SUCCESS;
     }
 }

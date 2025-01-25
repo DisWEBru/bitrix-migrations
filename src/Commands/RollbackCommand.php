@@ -50,7 +50,8 @@ class RollbackCommand extends AbstractCommand
         $ran = $this->migrator->getRanMigrations();
 
         if (empty($ran)) {
-            return $this->info('Nothing to rollback');
+            $this->info('Nothing to rollback');
+            return self::SUCCESS;
         }
 
         $migration = $ran[count($ran) - 1];
@@ -59,7 +60,9 @@ class RollbackCommand extends AbstractCommand
             ? $this->hardRollbackMigration($migration)
             : $this->rollbackMigration($migration);
 
-        return $this->deleteIfNeeded($migration);
+        $this->deleteIfNeeded($migration);
+
+        return self::SUCCESS;
     }
 
     /**

@@ -70,5 +70,7 @@ class MakeCommand extends AbstractCommand
         );
 
         $this->message("<info>Migration created:</info> {$migration}.php");
+
+        return self::SUCCESS;
     }
 }

@@ -52,5 +52,7 @@ class MigrateCommand extends AbstractCommand
         } else {
             $this->info('Nothing to migrate');
         }
+
+        return self::SUCCESS;
     }
 }

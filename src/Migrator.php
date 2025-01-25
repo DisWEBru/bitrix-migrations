@@ -441,6 +441,7 @@ class Migrator
             } catch (\Exception $e) {
                 $this->database->rollbackTransaction();
                 Logger::log("Откат транзакции из-за ошибки '{$e->getMessage()}'", Logger::COLOR_LIGHT_RED);
+                ExceptionTracing::print($e);
                 throw $e;
             }
             $this->database->commitTransaction();

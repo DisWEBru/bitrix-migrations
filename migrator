@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
 
+use Dotenv\Dotenv;
 use Diswebru\BitrixMigrations\Commands\ArchiveCommand;
 use Diswebru\BitrixMigrations\Commands\MakeCommand;
 use Diswebru\BitrixMigrations\Commands\InstallCommand;
@@ -14,10 +15,17 @@ use Diswebru\BitrixMigrations\Storages\BitrixDatabaseStorage;
 use Diswebru\BitrixMigrations\TemplatesCollection;
 use Symfony\Component\Console\Application;
 
+define("NO_KEEP_STATISTIC", true);
+define('NO_AGENT_CHECK', true);
 define("NOT_CHECK_PERMISSIONS", true);
-$_SERVER["DOCUMENT_ROOT"] = __DIR__;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+Dotenv::createImmutable(__DIR__)->load();
+
+$_SERVER["DOCUMENT_ROOT"] = $_ENV['BX_MIGRATION_DOC_ROOT'] ?? __DIR__;
 $DOCUMENT_ROOT = $_SERVER["DOCUMENT_ROOT"];
-require $_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php";
 
 CModule::IncludeModule("iblock");
 

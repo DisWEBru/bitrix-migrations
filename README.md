@@ -8,7 +8,7 @@
 
 2) `cp vendor/diswebru/bitrix-migrations/migrator migrator` - копируем исполняемый файл в удобное место.
 
-3) заходим внутрь и удостоверяемся что задается правильный $_SERVER['DOCUMENT_ROOT']. Меняем настройки если нужно
+3) в .env проекта нужно добавить параметр BX_MIGRATION_DOC_ROOT с путем $_SERVER['DOCUMENT_ROOT'] (домашний путь) к 1С-Битрикс или заходим внутрь файла migrator и удостоверяемся что задается правильный $_SERVER['DOCUMENT_ROOT']. Меняем настройки если нужно
 
 4) `php migrator install`
 

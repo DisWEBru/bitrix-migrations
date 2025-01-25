@@ -48,6 +48,8 @@ class StatusCommand extends AbstractCommand
         $this->output->write("\r\n");
 
         $this->showNewMigrations();
+
+        return self::SUCCESS;
     }
 
     /**
