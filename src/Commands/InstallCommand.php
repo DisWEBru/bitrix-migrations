@@ -20,7 +20,7 @@ class InstallCommand extends AbstractCommand
      */
     protected $table;
 
-    protected static $defaultName = 'install';
+    protected string $defaultName = 'install';
 
     /**
      * Constructor.
@@ -40,7 +40,7 @@ class InstallCommand extends AbstractCommand
     /**
      * Configures the current command.
      */
-    protected function configure()
+    protected function configure() : void
     {
         $this->setDescription('Create the migration database table');
     }
@@ -50,7 +50,7 @@ class InstallCommand extends AbstractCommand
      *
      * @return null|int
      */
-    protected function fire()
+    protected function fire() : int
     {
         if ($this->database->checkMigrationTableExistence()) {
             $this->abort("Table \"{$this->table}\" already exists");

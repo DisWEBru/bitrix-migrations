@@ -14,13 +14,13 @@
   ],
   "homepage": "https://github.com/DisWEBru/bitrix-migrations",
   "require": {
-    "php": ">=7.3.0",
-    "symfony/console": "~5",
-    "tightenco/collect": "8.*",
+    "php": ">=8.2",
+    "symfony/console": "~7",
+    "tightenco/collect": "9.*",
     "vlucas/phpdotenv": "^5.6"
   },
   "require-dev": {
-    "phpunit/phpunit": "~9.6",
+    "phpunit/phpunit": "~11.5",
     "mockery/mockery": "~1.6"
   },
   "autoload": {

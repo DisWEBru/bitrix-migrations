@@ -15,7 +15,7 @@ class TemplatesCommand extends AbstractCommand
      */
     protected $collection;
 
-    protected static $defaultName = 'templates';
+    protected string $defaultName = 'templates';
 
     /**
      * Constructor.
@@ -33,7 +33,7 @@ class TemplatesCommand extends AbstractCommand
     /**
      * Configures the current command.
      */
-    protected function configure()
+    protected function configure() : void
     {
         $this->setDescription('Show the list of available migration templates');
     }
@@ -43,7 +43,7 @@ class TemplatesCommand extends AbstractCommand
      *
      * @return null|int
      */
-    protected function fire()
+    protected function fire() : int
     {
         $table = new Table($this->output);
         $table->setHeaders(['Name', 'Path', 'Description'])->setRows($this->collectRows());
@@ -58,7 +58,7 @@ class TemplatesCommand extends AbstractCommand
      *
      * @return array
      */
-    protected function collectRows()
+    protected function collectRows() : array
     {
         $rows = collect($this->collection->all())
             ->filter(function ($template) {
@@ -86,7 +86,7 @@ class TemplatesCommand extends AbstractCommand
      *
      * @return array
      */
-    protected function separateRows($templates)
+    protected function separateRows($templates) : array
     {
         $rows = [];
         foreach ($templates as $template) {

@@ -15,7 +15,7 @@ class RollbackCommand extends AbstractCommand
      */
     protected $migrator;
 
-    protected static $defaultName = 'rollback';
+    protected string $defaultName = 'rollback';
 
     /**
      * Constructor.
@@ -33,7 +33,7 @@ class RollbackCommand extends AbstractCommand
     /**
      * Configures the current command.
      */
-    protected function configure()
+    protected function configure() : void
     {
         $this->setDescription('Rollback the last migration')
             ->addOption('hard', null, InputOption::VALUE_NONE, 'Rollback without running down()')
@@ -45,7 +45,7 @@ class RollbackCommand extends AbstractCommand
      *
      * @return null|int
      */
-    protected function fire()
+    protected function fire() : int
     {
         $ran = $this->migrator->getRanMigrations();
 
@@ -72,7 +72,7 @@ class RollbackCommand extends AbstractCommand
      *
      * @return null
      */
-    protected function rollbackMigration($migration)
+    protected function rollbackMigration($migration) : void
     {
         if ($this->migrator->doesMigrationFileExist($migration)) {
             $this->migrator->rollbackMigration($migration);
@@ -90,7 +90,7 @@ class RollbackCommand extends AbstractCommand
      *
      * @return null
      */
-    protected function hardRollbackMigration($migration)
+    protected function hardRollbackMigration($migration) : void
     {
         $this->migrator->removeSuccessfulMigrationFromLog($migration);
 
@@ -104,7 +104,7 @@ class RollbackCommand extends AbstractCommand
      *
      * @return void
      */
-    protected function markRolledBackWithConfirmation($migration)
+    protected function markRolledBackWithConfirmation($migration) : void
     {
         $helper = $this->getHelper('question');
         $question = new ConfirmationQuestion("<error>Migration $migration was not found.\r\nDo you want to mark it as rolled back? (y/n)</error>\r\n", false);
@@ -123,7 +123,7 @@ class RollbackCommand extends AbstractCommand
      *
      * @return null
      */
-    protected function deleteIfNeeded($migration)
+    protected function deleteIfNeeded($migration) : void
     {
         if (!$this->input->getOption('delete')) {
             return;

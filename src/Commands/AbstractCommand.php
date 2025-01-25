@@ -21,11 +21,26 @@ abstract class AbstractCommand extends Command
     protected $output;
 
     /**
+     * Command name
+     * @var string
+     */
+    protected string $defaultName;
+
+    /**
+     * Command name
+     * @return string
+     */
+    public function getName() : string
+    {
+        return $this->defaultName;
+    }
+
+    /**
      * Configures the current command.
      *
      * @param string $message
      */
-    protected function abort($message = '')
+    protected function abort($message = '') : void
     {
         if ($message) {
             $this->error($message);
@@ -44,7 +59,7 @@ abstract class AbstractCommand extends Command
      *
      * @return null|int null or 0 if everything went fine, or an error code.
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $this->input = $input;
         $this->output = $output;
@@ -66,7 +81,7 @@ abstract class AbstractCommand extends Command
      *
      * @param string$message
      */
-    protected function error($message)
+    protected function error($message) : void
     {
         $this->output->writeln("<error>{$message}</error>");
     }
@@ -76,7 +91,7 @@ abstract class AbstractCommand extends Command
      *
      * @param string $message
      */
-    protected function info($message)
+    protected function info($message) : void
     {
         $this->output->writeln("<info>{$message}</info>");
     }
@@ -86,7 +101,7 @@ abstract class AbstractCommand extends Command
      *
      * @param string $message
      */
-    protected function message($message)
+    protected function message($message) : void
     {
         $this->output->writeln("{$message}");
     }
@@ -96,5 +111,5 @@ abstract class AbstractCommand extends Command
      *
      * @return null|int
      */
-    abstract protected function fire();
+    abstract protected function fire() : int;
 }

@@ -13,7 +13,7 @@ class MigrateCommand extends AbstractCommand
      */
     protected $migrator;
 
-    protected static $defaultName = 'migrate';
+    protected string $defaultName = 'migrate';
     /**
      * Constructor.
      *
@@ -30,7 +30,7 @@ class MigrateCommand extends AbstractCommand
     /**
      * Configures the current command.
      */
-    protected function configure()
+    protected function configure() : void
     {
         $this->setDescription('Run all outstanding migrations');
     }
@@ -40,7 +40,7 @@ class MigrateCommand extends AbstractCommand
      *
      * @return null|int
      */
-    protected function fire()
+    protected function fire() : int
     {
         $toRun = $this->migrator->getMigrationsToRun();
 
